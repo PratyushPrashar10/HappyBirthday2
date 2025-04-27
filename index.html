@@ -175,6 +175,54 @@
 
 
 	</div>
+	<!-- Hidden Gift Box Button -->
+<button id="secretBtn" style="display:none; position:fixed; bottom:20px; right:20px; z-index:2000; background:none; border:none; font-size:40px; cursor:pointer;">🎁</button>
+
+<!-- Hidden Message Container -->
+<div id="hidden-message-content" style="display:none;"></div>
+
+<script>
+  $(document).ready(function() {
+    // After story button clicked
+    $("#story").click(function(){
+      let delay = 0;
+      $(".message p").each(function(){
+        $(this).delay(delay).fadeIn(600);
+        delay += 600;
+      });
+      setTimeout(function(){
+        $("#secretBtn").fadeIn('slow');
+      }, delay);
+    });
+
+    // Gift Box Click
+    $("#secretBtn").click(function(){
+      let secretMsg = $('<div></div>', {
+        text: "Happy Birthday again, my Dear! You're the light of my life, and I’m so lucky to have you by my side.",
+        css: {
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+          padding: "25px",
+          borderRadius: "20px",
+          fontSize: "24px",
+          color: "#fff",
+          fontWeight: "bold",
+          zIndex: 3000,
+          textAlign: "center",
+          boxShadow: "0 0 30px rgba(0,0,0,0.5)"
+        }
+      }).hide().appendTo('body').fadeIn('slow');
+
+      // Hide message after 5s
+      setTimeout(function(){
+        secretMsg.fadeOut('slow', function() { $(this).remove(); });
+      }, 5000);
+    });
+  });
+</script>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
